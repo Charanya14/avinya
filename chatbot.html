@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="OsteoAI Medical Chatbot — Ask your AI bone health assistant anything." />
+    <title>AI Chatbot — OsteoAI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body style="overflow:hidden">
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">🦴 OsteoAI</div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">Starting AI Chat...</div>
+    </div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="page-wrapper" style="height:100vh">
+        <div class="chatbot-layout">
+
+            <!-- Chat Sidebar / History -->
+            <div class="chat-sidebar" id="chatSidebar">
+                <a href="index.html" class="navbar-brand" style="margin-bottom:1.5rem;display:flex">
+                    <div class="brand-icon" style="width:32px;height:32px;font-size:1rem">🦴</div>
+                    <div class="brand-text" style="font-size:1rem">OsteoAI</div>
+                </a>
+                <div class="chat-sidebar-title">💬 Conversations</div>
+                <div class="chat-history">
+                    <div class="chat-history-item active">
+                        <div>Bone density questions</div>
+                        <div class="chat-time">Today, 2:30 PM</div>
+                    </div>
+                    <div class="chat-history-item">
+                        <div>Understanding my T-score</div>
+                        <div class="chat-time">Yesterday</div>
+                    </div>
+                    <div class="chat-history-item">
+                        <div>Calcium & Vitamin D advice</div>
+                        <div class="chat-time">Feb 24</div>
+                    </div>
+                    <div class="chat-history-item">
+                        <div>Exercise recommendations</div>
+                        <div class="chat-time">Feb 20</div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:1rem"
+                    onclick="clearChat()">+ New Chat</button>
+                <div style="margin-top:1rem">
+                    <a href="dashboard.html" class="btn btn-secondary btn-sm"
+                        style="width:100%;justify-content:center">← Dashboard</a>
+                </div>
+            </div>
+
+            <!-- Main Chat Area -->
+            <div class="chat-main">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <div class="bot-name">OsteoAI Medical Assistant</div>
+                        <div class="bot-status">Online · Powered by Medical AI</div>
+                    </div>
+                    <div style="margin-left:auto;display:flex;gap:0.75rem;align-items:center">
+                        <button class="theme-toggle" id="themeToggle">🌙</button>
+                        <button class="btn btn-icon" id="ttsToggleBtn" title="Toggle text-to-speech"
+                            onclick="toggleTTS()">🔊</button>
+                        <button class="btn btn-icon"
+                            onclick="document.getElementById('chatSidebar').classList.toggle('open')">☰</button>
+                    </div>
+                </div>
+
+                <!-- Messages -->
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Welcome Message -->
+                    <div class="message bot">
+                        <div class="message-avatar">🤖</div>
+                        <div>
+                            <div class="message-bubble">
+                                👋 Hello! I'm <strong>OsteoAI</strong>, your medical AI assistant specialized in bone
+                                health and osteoporosis.<br /><br />
+                                I can help you:<br />
+                                🦴 Understand your bone density reports<br />
+                                💊 Learn about osteoporosis treatments<br />
+                                🥗 Get dietary and lifestyle recommendations<br />
+                                ❓ Answer any bone health questions<br /><br />
+                                What would you like to know today?
+                            </div>
+                            <div class="message-time">2:30 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Suggestions -->
+                <div class="quick-suggestions" id="quickSuggestions">
+                    <button class="suggestion-btn" onclick="sendSuggestion(this)">🦴 What is my T-score?</button>
+                    <button class="suggestion-btn" onclick="sendSuggestion(this)">💊 What foods help bone
+                        density?</button>
+                    <button class="suggestion-btn" onclick="sendSuggestion(this)">🏃 Best exercises for
+                        osteoporosis?</button>
+                    <button class="suggestion-btn" onclick="sendSuggestion(this)">⚠️ What are osteoporosis
+                        symptoms?</button>
+                    <button class="suggestion-btn" onclick="sendSuggestion(this)">📊 Explain my report</button>
+                </div>
+
+                <!-- Input Area -->
+                <div class="chat-input-area">
+                    <button class="btn btn-icon" id="micBtn" title="Speak your message" onclick="toggleSpeechInput()"
+                        style="flex-shrink:0;background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text-primary)">🎤</button>
+                    <input type="text" class="chat-input" id="chatInput"
+                        placeholder="Ask me anything about bone health..."
+                        onkeydown="if(event.key==='Enter')sendMessage()" />
+                    <button class="send-btn" onclick="sendMessage()" id="sendBtn">➤</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

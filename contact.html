@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="Contact OsteoAI — Get in touch with our medical AI support team." />
+    <title>Contact — OsteoAI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">🦴 OsteoAI</div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading...</div>
+    </div>
+    <div id="scroll-progress"></div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="page-wrapper">
+
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">🦴</div>
+                <div class="brand-text">OsteoAI<span>Detection System</span></div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a><a href="about.html">About</a><a href="upload.html">Upload X-Ray</a>
+                <a href="dashboard.html">Dashboard</a><a href="chatbot.html">AI Chat</a><a href="contact.html"
+                    class="active">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <div style="padding:8rem 2rem 4rem;text-align:center">
+            <div class="section-tag reveal" style="margin:0 auto 1rem">✉️ Get In Touch</div>
+            <h1 class="section-title reveal">Contact <span>Our Team</span></h1>
+            <p class="section-desc reveal" style="margin-top:1rem">Whether you have questions about the AI analysis,
+                need technical support, or want to discuss partnership opportunities — we're here to help.</p>
+        </div>
+
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="contact-grid">
+
+                    <!-- Contact Info -->
+                    <div style="display:flex;flex-direction:column;gap:1.5rem">
+                        <div class="glass-card contact-info-card">
+                            <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:2rem">📞 Contact
+                                Details</h3>
+                            <div class="contact-item">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-detail">
+                                    <h4>Email Us</h4>
+                                    <p>info@osteoai.com</p>
+                                    <p>support@osteoai.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+                                <div class="contact-detail">
+                                    <h4>Call Us</h4>
+                                    <p>+91 123 456 7890</p>
+                                    <p>Mon–Fri, 9AM–6PM IST</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-detail">
+                                    <h4>Our Office</h4>
+                                    <p>MLRIT Campus, Dundigal</p>
+                                    <p>Hyderabad, Telangana 500043</p>
+                                </div>
+                            </div>
+                            <div class="contact-item" style="margin-bottom:0">
+                                <div class="contact-icon">⏰</div>
+                                <div class="contact-detail">
+                                    <h4>Support Hours</h4>
+                                    <p>Mon–Fri: 9AM – 6PM IST</p>
+                                    <p>AI Chatbot: 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Placeholder -->
+                        <div class="glass-card" style="padding:1.5rem">
+                            <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:1rem">📍 Location</h3>
+                            <div class="map-placeholder">
+                                <span style="font-size:2.5rem">🗺️</span>
+                                <span>MLRIT, Dundigal, Hyderabad</span>
+                                <span style="font-size:0.8rem">Google Maps integration ready</span>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="glass-card" style="padding:1.5rem">
+                            <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:1rem">🌐 Follow Us
+                            </h3>
+                            <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+                                <a href="#" class="social-btn"
+                                    style="width:auto;padding:0.5rem 1rem;border-radius:8px;display:flex;align-items:center;gap:0.5rem;font-size:0.85rem">🐦
+                                    Twitter</a>
+                                <a href="#" class="social-btn"
+                                    style="width:auto;padding:0.5rem 1rem;border-radius:8px;display:flex;align-items:center;gap:0.5rem;font-size:0.85rem">💼
+                                    LinkedIn</a>
+                                <a href="#" class="social-btn"
+                                    style="width:auto;padding:0.5rem 1rem;border-radius:8px;display:flex;align-items:center;gap:0.5rem;font-size:0.85rem">🐙
+                                    GitHub</a>
+                                <a href="#" class="social-btn"
+                                    style="width:auto;padding:0.5rem 1rem;border-radius:8px;display:flex;align-items:center;gap:0.5rem;font-size:0.85rem">📸
+                                    Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="glass-card contact-form-card reveal reveal-right">
+                        <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:0.5rem">✉️ Send Us a
+                            Message</h3>
+                        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:2rem">We typically respond
+                            within 24 hours.</p>
+
+                        <form id="contactForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-input" placeholder="John" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-input" placeholder="Doe" required />
+                                </div>
+                            </div>
+                            <div class="form-group input-icon">
+                                <label class="form-label">Email Address</label>
+                                <span class="icon">📧</span>
+                                <input type="email" class="form-input" placeholder="john@example.com" required />
+                            </div>
+                            <div class="form-group input-icon">
+                                <label class="form-label">Subject</label>
+                                <span class="icon">📝</span>
+                                <select class="form-input"
+                                    style="background:rgba(255,255,255,0.05);color:var(--text-primary)">
+                                    <option>General Inquiry</option>
+                                    <option>Technical Support</option>
+                                    <option>Partnership Opportunity</option>
+                                    <option>Medical Question</option>
+                                    <option>Report an Issue</option>
+                                    <option>Feature Request</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-textarea" placeholder="Tell us how we can help you..."
+                                    required></textarea>
+                            </div>
+                            <div class="toggle-wrap" style="margin-bottom:1.5rem;font-size:0.85rem">
+                                <div class="toggle" id="newsletterToggle" onclick="this.classList.toggle('on')"></div>
+                                <span>Subscribe to OsteoAI health tips newsletter</span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                style="width:100%;justify-content:center" id="contactSubmitBtn">
+                                📤 Send Message
+                            </button>
+                            <div id="contactSuccess"
+                                style="display:none;text-align:center;margin-top:1rem;color:var(--success);font-weight:600">
+                                ✅ Message sent successfully! We'll respond within 24 hours.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" style="padding-top:2rem;background:rgba(0,201,167,0.02)">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">❓ FAQ</div>
+                    <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+                </div>
+                <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:1rem">
+                    <div class="glass-card reveal" style="padding:1.5rem;cursor:pointer" onclick="toggleFaq(this)">
+                        <div style="display:flex;justify-content:space-between;align-items:center;font-weight:600">
+                            <span>Is OsteoAI a replacement for a doctor's diagnosis?</span>
+                            <span class="faq-arrow">▼</span>
+                        </div>
+                        <p class="faq-body"
+                            style="display:none;margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+                            No. OsteoAI is a clinical decision support tool designed to assist — not replace — qualified
+                            medical professionals. All AI-generated reports should be reviewed by a certified healthcare
+                            provider.</p>
+                    </div>
+                    <div class="glass-card reveal delay-1" style="padding:1.5rem;cursor:pointer"
+                        onclick="toggleFaq(this)">
+                        <div style="display:flex;justify-content:space-between;align-items:center;font-weight:600">
+                            <span>What image formats are supported?</span><span class="faq-arrow">▼</span>
+                        </div>
+                        <p class="faq-body"
+                            style="display:none;margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+                            We support JPEG, PNG, BMP, and DICOM formats. DICOM format provides the highest analysis
+                            accuracy as it retains full radiographic metadata.</p>
+                    </div>
+                    <div class="glass-card reveal delay-2" style="padding:1.5rem;cursor:pointer"
+                        onclick="toggleFaq(this)">
+                        <div style="display:flex;justify-content:space-between;align-items:center;font-weight:600">
+                            <span>How is my medical data protected?</span><span class="faq-arrow">▼</span>
+                        </div>
+                        <p class="faq-body"
+                            style="display:none;margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+                            All data is encrypted using AES-256. We are HIPAA compliant and offer zero data retention
+                            policies. Images are processed in isolated environments and never shared with third parties
+                            without explicit consent.</p>
+                    </div>
+                    <div class="glass-card reveal delay-3" style="padding:1.5rem;cursor:pointer"
+                        onclick="toggleFaq(this)">
+                        <div style="display:flex;justify-content:space-between;align-items:center;font-weight:600">
+                            <span>How accurate is the AI model?</span><span class="faq-arrow">▼</span>
+                        </div>
+                        <p class="faq-body"
+                            style="display:none;margin-top:1rem;color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+                            Our ResNet-50 model achieves 97.3% accuracy on the test dataset of 10,000+ annotated X-rays.
+                            Performance is continuously monitored and updated with new training data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="navbar-brand">
+                            <div class="brand-icon">🦴</div>
+                            <div class="brand-text">OsteoAI<span>Detection System</span></div>
+                        </div>
+                        <p>Built for Hackathon 2026. Dedicated to saving lives through AI.</p>
+                        <div class="footer-socials"><a href="#" class="social-btn">🐦</a><a href="#"
+                                class="social-btn">💼</a><a href="#" class="social-btn">🐙</a></div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="upload.html">Upload X-Ray</a></li>
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="chatbot.html">AI Chatbot</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:info@osteoai.com">📧 info@osteoai.com</a></li>
+                            <li><a href="tel:+911234567890">📞 +91 123 456 7890</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom"><span>© 2026 OsteoAI. All rights reserved.</span><span>🦴 Hackathon
+                        2026</span></div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

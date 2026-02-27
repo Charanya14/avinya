@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="AI Bone Health Report — Detailed osteoporosis risk analysis by OsteoAI." />
+    <title>Report — OsteoAI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">🦴 OsteoAI</div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading Report...</div>
+    </div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="page-wrapper">
+        <div class="dashboard-layout">
+
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <div class="brand-icon">🦴</div>
+                        <div class="brand-text">OsteoAI<span>Dashboard</span></div>
+                    </a>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="dashboard.html" class="sidebar-link"><span class="link-icon">📊</span>Overview</a>
+                    <a href="upload.html" class="sidebar-link"><span class="link-icon">📤</span>Upload X-Ray</a>
+                    <a href="report.html" class="sidebar-link active"><span class="link-icon">📋</span>My Reports</a>
+                    <a href="chatbot.html" class="sidebar-link"><span class="link-icon">🤖</span>AI Chatbot</a>
+                    <div class="nav-section-label">Account</div>
+                    <a href="contact.html" class="sidebar-link"><span class="link-icon">✉️</span>Support</a>
+                </nav>
+                <div class="sidebar-footer">
+                    <div class="user-mini">
+                        <div class="user-avatar" id="userAvatar">👤</div>
+                        <div>
+                            <div class="user-mini-name" id="userNameDisplay">My Account</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="top-bar">
+                    <div style="display:flex;align-items:center;gap:1rem">
+                        <button class="btn btn-icon" id="sidebarToggle">☰</button>
+                        <h1 class="page-title">📋 AI Bone Health Report</h1>
+                    </div>
+                    <div class="top-bar-actions">
+                        <button class="theme-toggle" id="themeToggle">🌙</button>
+                        <button onclick="window.print()" class="btn btn-secondary btn-sm">🖨️ Print</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-body">
+                    <div id="reportContent" style="max-width:100%">
+
+                        <!-- Empty State shown if no prediction yet -->
+                        <div class="glass-card reveal" id="emptyState" style="text-align:center;padding:4rem 2rem;display:none">
+                            <div style="font-size:4rem;margin-bottom:1rem">🦴</div>
+                            <h2 style="font-family:var(--font-main);font-weight:700;margin-bottom:1rem">No Report Generated Yet</h2>
+                            <p style="color:var(--text-muted);max-width:480px;margin:0 auto 2rem;line-height:1.7">
+                                Upload an X-ray or bone scan to let OsteoAI analyse your bone density and generate a personalised report.
+                            </p>
+                            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                                <a href="upload.html" class="btn btn-primary btn-lg">📤 Upload X-Ray Scan</a>
+                                <a href="chatbot.html" class="btn btn-secondary btn-lg">🤖 Ask AI a Question</a>
+                            </div>
+                        </div>
+
+                        <!-- Report Card (shown when prediction available) -->
+                        <div id="reportCard" style="display:none">
+                            <div class="glass-card reveal" style="padding:2rem;margin-bottom:1.5rem">
+                                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
+                                    <div>
+                                        <h2 style="font-family:var(--font-main);font-weight:800;font-size:1.4rem;margin-bottom:0.3rem">
+                                            🦴 Osteoporosis Risk Analysis
+                                        </h2>
+                                        <div style="color:var(--text-muted);font-size:0.85rem" id="reportDate">—</div>
+                                    </div>
+                                    <div id="riskBadge" style="padding:0.5rem 1.2rem;border-radius:50px;font-weight:700;font-size:0.95rem">
+                                        — Risk
+                                    </div>
+                                </div>
+
+                                <!-- Key Metrics -->
+                                <div class="stats-grid" style="margin-bottom:1.5rem">
+                                    <div style="text-align:center;padding:1.2rem;background:rgba(255,255,255,0.04);border-radius:14px">
+                                        <div style="font-size:2rem;font-weight:800;color:var(--warning)" id="rptTScore">—</div>
+                                        <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">T-Score</div>
+                                        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.15rem" id="tScoreLabel">—</div>
+                                    </div>
+                                    <div style="text-align:center;padding:1.2rem;background:rgba(255,255,255,0.04);border-radius:14px">
+                                        <div style="font-size:2rem;font-weight:800" id="rptRisk">—</div>
+                                        <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">Risk Level</div>
+                                        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.15rem" id="rptProbability">—</div>
+                                    </div>
+                                    <div style="text-align:center;padding:1.2rem;background:rgba(255,255,255,0.04);border-radius:14px">
+                                        <div style="font-size:2rem;font-weight:800;color:var(--accent)" id="rptConfidence">—</div>
+                                        <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">AI Confidence</div>
+                                        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.15rem">Model: OsteoCNN v1</div>
+                                    </div>
+                                </div>
+
+                                <!-- Recommendation Box -->
+                                <div style="background:linear-gradient(135deg,rgba(0,201,167,0.08),rgba(0,229,255,0.04));border-radius:14px;padding:1.25rem;border:1px solid rgba(0,201,167,0.15)">
+                                    <div style="font-weight:700;margin-bottom:0.5rem">📋 AI Recommendation</div>
+                                    <div style="color:var(--text-secondary);line-height:1.7" id="rptRecommendation">—</div>
+                                </div>
+                            </div>
+
+                            <!-- T-Score Scale Reference -->
+                            <div class="glass-card reveal" style="padding:1.75rem;margin-bottom:1.5rem">
+                                <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:1rem">📊 WHO T-Score Classification</h3>
+                                <div style="display:flex;flex-direction:column;gap:0.6rem">
+                                    <div style="display:flex;justify-content:space-between;padding:0.6rem 1rem;background:rgba(46,213,115,0.1);border-radius:8px;border-left:3px solid var(--success)">
+                                        <span>Normal</span><span style="color:var(--success);font-weight:600">&gt; -1.0</span>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;padding:0.6rem 1rem;background:rgba(255,190,0,0.08);border-radius:8px;border-left:3px solid var(--warning)">
+                                        <span>Osteopenia (Low Bone Density)</span><span style="color:var(--warning);font-weight:600">-1.0 to -2.5</span>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;padding:0.6rem 1rem;background:rgba(255,71,87,0.08);border-radius:8px;border-left:3px solid var(--danger)">
+                                        <span>Osteoporosis</span><span style="color:var(--danger);font-weight:600">&lt; -2.5</span>
+                                    </div>
+                                </div>
+                                <div id="tScoreMarker" style="margin-top:1rem;padding:0.6rem 1rem;border-radius:8px;background:rgba(255,255,255,0.04);font-size:0.9rem">
+                                    Your T-score: <strong id="markerTScore">—</strong>
+                                </div>
+                            </div>
+
+                            <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                                <a href="upload.html" class="btn btn-primary">📤 New Scan</a>
+                                <a href="chatbot.html" class="btn btn-secondary">🤖 Ask OsteoAI</a>
+                                <button onclick="window.print()" class="btn btn-secondary">🖨️ Print Report</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+    <script>
+        // Load last prediction from localStorage
+        (function loadReport() {
+            const raw = localStorage.getItem('lastPrediction');
+            const emptyEl = document.getElementById('emptyState');
+            const cardEl = document.getElementById('reportCard');
+
+            if (!raw) {
+                if (emptyEl) emptyEl.style.display = 'block';
+                return;
+            }
+
+            try {
+                const d = JSON.parse(raw);
+                if (cardEl) cardEl.style.display = 'block';
+
+                // Date
+                const dateEl = document.getElementById('reportDate');
+                if (dateEl && d.date) dateEl.textContent = 'Analysed: ' + new Date(d.date).toLocaleString();
+
+                // Risk badge
+                const badge = document.getElementById('riskBadge');
+                if (badge) {
+                    const col = d.risk_level === 'High' ? '#ff4757' : d.risk_level === 'Moderate' ? '#ffbe00' : '#2ed573';
+                    badge.textContent = d.risk_level + ' Risk';
+                    badge.style.background = col + '22';
+                    badge.style.color = col;
+                    badge.style.border = '1px solid ' + col + '44';
+                }
+
+                // T-Score
+                const ts = d.t_score ?? '-1.8';
+                const tsEl = document.getElementById('rptTScore');
+                if (tsEl) { tsEl.textContent = ts; tsEl.style.color = ts < -2.5 ? 'var(--danger)' : ts < -1 ? 'var(--warning)' : 'var(--success)'; }
+                const tsLabel = document.getElementById('tScoreLabel');
+                if (tsLabel) tsLabel.textContent = ts < -2.5 ? 'Osteoporosis' : ts < -1 ? 'Osteopenia' : 'Normal';
+                const marker = document.getElementById('markerTScore');
+                if (marker) marker.textContent = ts;
+
+                // Risk & probability
+                const riskEl = document.getElementById('rptRisk');
+                if (riskEl) {
+                    riskEl.textContent = d.risk_level;
+                    riskEl.style.color = d.risk_level === 'High' ? 'var(--danger)' : d.risk_level === 'Moderate' ? 'var(--warning)' : 'var(--success)';
+                }
+                const probEl = document.getElementById('rptProbability');
+                if (probEl) probEl.textContent = 'Probability: ' + (d.probability ? (d.probability * 100).toFixed(1) + '%' : '—');
+
+                // Confidence
+                const confEl = document.getElementById('rptConfidence');
+                if (confEl) confEl.textContent = d.confidence || '—';
+
+                // Recommendation
+                const recEl = document.getElementById('rptRecommendation');
+                if (recEl) recEl.textContent = d.recommendation || d.message || '—';
+
+            } catch (e) {
+                if (emptyEl) emptyEl.style.display = 'block';
+            }
+        })();
+    </script>
+</body>
+
+</html>

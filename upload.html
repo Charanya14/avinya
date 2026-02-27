@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="Upload X-Ray — AI-powered bone density analysis by OsteoAI." />
+    <title>Upload X-Ray — OsteoAI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">🦴 OsteoAI</div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading...</div>
+    </div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="page-wrapper">
+        <div class="dashboard-layout">
+
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <div class="brand-icon">🦴</div>
+                        <div class="brand-text">OsteoAI<span>Dashboard</span></div>
+                    </a>
+                </div>
+                <nav class="sidebar-nav">
+                    <div class="nav-section-label">Main</div>
+                    <a href="dashboard.html" class="sidebar-link"><span class="link-icon">📊</span>Overview</a>
+                    <a href="upload.html" class="sidebar-link active"><span class="link-icon">📤</span>Upload X-Ray</a>
+                    <a href="report.html" class="sidebar-link"><span class="link-icon">📋</span>My Reports</a>
+                    <a href="chatbot.html" class="sidebar-link"><span class="link-icon">🤖</span>AI Chatbot</a>
+                    <div class="nav-section-label">Account</div>
+                    <a href="about.html" class="sidebar-link"><span class="link-icon">ℹ️</span>About</a>
+                    <a href="contact.html" class="sidebar-link"><span class="link-icon">✉️</span>Support</a>
+                </nav>
+                <div class="sidebar-footer">
+                    <div class="user-mini">
+                        <div class="user-avatar">DR</div>
+                        <div>
+                            <div class="user-mini-name">Dr. Ramesh</div>
+                            <div class="user-mini-role">Radiologist</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="top-bar">
+                    <div style="display:flex;align-items:center;gap:1rem">
+                        <button class="btn btn-icon" id="sidebarToggle">☰</button>
+                        <h1 class="page-title">📤 Upload X-Ray for Analysis</h1>
+                    </div>
+                    <div class="top-bar-actions">
+                        <button class="theme-toggle" id="themeToggle">🌙</button>
+                        <a href="dashboard.html" class="btn btn-secondary btn-sm">← Dashboard</a>
+                    </div>
+                </div>
+
+                <div class="dashboard-body">
+                    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;align-items:start"
+                        class="upload-main-grid">
+
+                        <!-- Left: Upload + Analysis -->
+                        <div>
+                            <!-- Drop Zone -->
+                            <div class="glass-card" style="padding:0.5rem;margin-bottom:1.5rem">
+                                <div class="upload-area" id="uploadArea"
+                                    onclick="document.getElementById('fileInput').click()">
+                                    <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.dicom,.dcm,.bmp"
+                                        style="display:none" />
+                                    <div class="upload-icon-wrap">📤</div>
+                                    <h3 class="upload-title">Drag & Drop Your X-Ray Here</h3>
+                                    <p class="upload-sub">Or click to browse your files</p>
+                                    <button type="button" class="btn btn-outline">📁 Browse Files</button>
+                                    <div class="format-tags">
+                                        <span class="format-tag">JPEG</span>
+                                        <span class="format-tag">PNG</span>
+                                        <span class="format-tag">DICOM</span>
+                                        <span class="format-tag">BMP</span>
+                                        <span class="format-tag">Max 25MB</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- File Preview (hidden until upload) -->
+                            <div class="preview-section glass-card" id="previewSection">
+                                <div class="preview-card">
+                                    <div class="preview-thumb" id="previewThumb">🩻</div>
+                                    <div class="preview-details">
+                                        <div class="preview-name" id="previewName">—</div>
+                                        <div class="preview-size" id="previewSize">—</div>
+                                        <div class="upload-progress" style="margin-top:0.5rem">
+                                            <div
+                                                style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);margin-bottom:4px">
+                                                <span>Upload Progress</span><span id="progressPct">0%</span>
+                                            </div>
+                                            <div class="progress-bar-track">
+                                                <div class="progress-bar-fill" id="progressBar"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="clearFile()" class="btn btn-sm btn-danger"
+                                        style="padding:0.4rem 0.8rem">✕</button>
+                                </div>
+                            </div>
+
+                            <!-- Scan Options -->
+                            <div class="glass-card" style="padding:1.5rem;margin-top:1.5rem">
+                                <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:1rem">⚙️ Analysis
+                                    Settings</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Anatomical Region</label>
+                                        <select class="form-input"
+                                            style="background:rgba(255,255,255,0.05);color:var(--text-primary)">
+                                            <option>Lumbar Spine (L1-L4)</option>
+                                            <option>Hip — Total</option>
+                                            <option>Femoral Neck</option>
+                                            <option>Forearm / Wrist</option>
+                                            <option>Whole Body</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Scan Type</label>
+                                        <select class="form-input"
+                                            style="background:rgba(255,255,255,0.05);color:var(--text-primary)">
+                                            <option>DXA Scan</option>
+                                            <option>X-Ray (Standard)</option>
+                                            <option>CT Scan</option>
+                                            <option>MRI</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Patient Notes (Optional)</label>
+                                    <textarea class="form-textarea"
+                                        placeholder="Add any relevant medical history, medications, or notes for the AI analysis..."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Analyze Button -->
+                            <div class="analyze-section">
+                                <button class="btn btn-primary btn-lg" id="analyzeBtn" style="min-width:220px"
+                                    onclick="startAnalysis()">
+                                    🧠 Analyze X-Ray
+                                </button>
+                                <div class="analyzing-spinner" id="analyzingSpinner"></div>
+                                <div id="analysisStatus"
+                                    style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.5rem"></div>
+                            </div>
+
+                            <!-- Result Placeholder -->
+                            <div class="glass-card result-placeholder" id="resultCard">
+                                <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+                                <h3
+                                    style="font-family:var(--font-main);font-weight:700;margin-bottom:0.5rem;color:var(--success)">
+                                    Analysis Complete!</h3>
+                                <p style="color:var(--text-secondary);margin-bottom:1.5rem">Your X-ray has been analyzed
+                                    by the AI model.</p>
+                                <div class="stats-grid" style="margin-bottom:1.5rem">
+                                    <div
+                                        style="text-align:center;padding:1rem;background:rgba(255,255,255,0.04);border-radius:12px">
+                                        <div style="font-size:1.5rem;font-weight:800;color:var(--warning)">-1.8</div>
+                                        <div style="font-size:0.8rem;color:var(--text-muted)">T-Score</div>
+                                    </div>
+                                    <div
+                                        style="text-align:center;padding:1rem;background:rgba(255,255,255,0.04);border-radius:12px">
+                                        <div style="font-size:1.5rem;font-weight:800;color:var(--warning)">Moderate
+                                        </div>
+                                        <div style="font-size:0.8rem;color:var(--text-muted)">Risk Level</div>
+                                    </div>
+                                    <div
+                                        style="text-align:center;padding:1rem;background:rgba(255,255,255,0.04);border-radius:12px">
+                                        <div style="font-size:1.5rem;font-weight:800;color:var(--accent)">94.8%</div>
+                                        <div style="font-size:0.8rem;color:var(--text-muted)">Confidence</div>
+                                    </div>
+                                </div>
+                                <a href="report.html" class="btn btn-primary">📋 View Full Report →</a>
+                            </div>
+                        </div>
+
+                        <!-- Right: Tips & Info -->
+                        <div style="display:flex;flex-direction:column;gap:1.5rem">
+                            <div class="glass-card" style="padding:1.75rem">
+                                <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:1rem">💡 Tips for
+                                    Best Results</h3>
+                                <div style="display:flex;flex-direction:column;gap:0.75rem">
+                                    <div
+                                        style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--text-secondary)">
+                                        <span>✅</span><span>Use high-resolution images (min. 1024×1024 px)</span>
+                                    </div>
+                                    <div
+                                        style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--text-secondary)">
+                                        <span>✅</span><span>Ensure the X-ray is properly oriented and well-lit</span>
+                                    </div>
+                                    <div
+                                        style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--text-secondary)">
+                                        <span>✅</span><span>Avoid cropped or partially visible scans</span>
+                                    </div>
+                                    <div
+                                        style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--text-secondary)">
+                                        <span>✅</span><span>DICOM format yields the highest accuracy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="glass-card"
+                                style="padding:1.75rem;background:linear-gradient(135deg,rgba(0,201,167,0.08),rgba(0,229,255,0.04))">
+                                <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:0.5rem">🛡️ Your
+                                    Privacy</h3>
+                                <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">All uploads are
+                                    encrypted with AES-256. Images are processed in isolated containers and never stored
+                                    permanently without consent.</p>
+                            </div>
+                            <div class="glass-card" style="padding:1.75rem">
+                                <h3 style="font-family:var(--font-main);font-weight:700;margin-bottom:1rem">📊 AI Model
+                                    Info</h3>
+                                <div class="metric-row">
+                                    <div class="metric-name">Model Architecture</div>
+                                    <div class="metric-val">ResNet-50</div>
+                                </div>
+                                <div class="metric-row">
+                                    <div class="metric-name">Training Dataset</div>
+                                    <div class="metric-val">52,000 scans</div>
+                                </div>
+                                <div class="metric-row">
+                                    <div class="metric-name">Accuracy</div>
+                                    <div class="metric-val" style="color:var(--accent)">97.3%</div>
+                                </div>
+                                <div class="metric-row">
+                                    <div class="metric-name">Processing Time</div>
+                                    <div class="metric-val">&lt; 10 seconds</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

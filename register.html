@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="Create your OsteoAI account — Start your AI bone health journey." />
+    <title>Register — OsteoAI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">🦴 OsteoAI</div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading...</div>
+    </div>
+    <div id="scroll-progress"></div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="page-wrapper">
+
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">🦴</div>
+                <div class="brand-text">OsteoAI<span>Detection System</span></div>
+            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+            </div>
+        </nav>
+
+        <div class="auth-page">
+            <div class="auth-container glass-card">
+                <!-- Left Panel -->
+                <div class="auth-left">
+                    <div>
+                        <div class="auth-illustration">🧬</div>
+                        <div class="auth-info">
+                            <h2>Join OsteoAI Today</h2>
+                            <p>Create your free account and start protecting your bone health with the power of medical
+                                AI.</p>
+                            <div class="auth-features">
+                                <div class="auth-feature"><span class="check">✅</span>Free account — no credit card
+                                </div>
+                                <div class="auth-feature"><span class="check">✅</span>Unlimited X-ray analysis</div>
+                                <div class="auth-feature"><span class="check">✅</span>Download detailed PDF reports
+                                </div>
+                                <div class="auth-feature"><span class="check">✅</span>AI medical chatbot access</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size:0.8rem;color:var(--text-muted)">🔒 Your medical data stays private.</div>
+                </div>
+                <!-- Right Panel — Multi-Step Form -->
+                <div class="auth-right">
+                    <h2 class="auth-form-title">Create Account</h2>
+                    <p class="auth-form-sub">Step <span id="stepIndicator">1</span> of 3</p>
+                    <!-- Progress Steps -->
+                    <div class="progress-steps">
+                        <div class="prog-step active" id="ps1"></div>
+                        <div class="prog-step" id="ps2"></div>
+                        <div class="prog-step" id="ps3"></div>
+                    </div>
+
+                    <form id="registerForm" novalidate>
+                        <!-- Step 1: Personal Info -->
+                        <div class="step-form active" id="step1">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-input" id="firstName" placeholder="John" required />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-input" id="lastName" placeholder="Doe" required />
+                                </div>
+                            </div>
+                            <div class="form-group input-icon">
+                                <label class="form-label">Email Address</label>
+                                <span class="icon">📧</span>
+                                <input type="email" class="form-input" id="regEmail" placeholder="john@example.com"
+                                    required />
+                            </div>
+                            <div class="form-group input-icon">
+                                <label class="form-label">Phone Number</label>
+                                <span class="icon">📞</span>
+                                <input type="tel" class="form-input" id="regPhone" placeholder="+91 98765 43210" />
+                            </div>
+                            <button type="button" class="btn btn-primary" style="width:100%;justify-content:center"
+                                onclick="nextStep(2)">Next: Medical Profile →</button>
+                        </div>
+
+                        <!-- Step 2: Medical Profile -->
+                        <div class="step-form" id="step2">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Age</label>
+                                    <input type="number" class="form-input" placeholder="45" min="1" max="120" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Gender</label>
+                                    <select class="form-input"
+                                        style="background:rgba(255,255,255,0.05);color:var(--text-primary)">
+                                        <option value="">Select</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Height (cm)</label>
+                                    <input type="number" class="form-input" placeholder="165" min="50" max="250" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Weight (kg)</label>
+                                    <input type="number" class="form-input" placeholder="65" min="10" max="300" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Role</label>
+                                <select class="form-input"
+                                    style="background:rgba(255,255,255,0.05);color:var(--text-primary)">
+                                    <option>Patient</option>
+                                    <option>Doctor</option>
+                                    <option>Radiologist</option>
+                                    <option>Researcher</option>
+                                </select>
+                            </div>
+                            <div style="display:flex;gap:1rem">
+                                <button type="button" class="btn btn-secondary" style="flex:1;justify-content:center"
+                                    onclick="nextStep(1)">← Back</button>
+                                <button type="button" class="btn btn-primary" style="flex:2;justify-content:center"
+                                    onclick="nextStep(3)">Next: Security →</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Password & Terms -->
+                        <div class="step-form" id="step3">
+                            <div class="form-group input-icon">
+                                <label class="form-label">Password</label>
+                                <span class="icon">🔒</span>
+                                <input type="password" class="form-input" id="regPwd" placeholder="Min. 8 characters"
+                                    required />
+                            </div>
+                            <!-- Password Strength Bar -->
+                            <div style="margin:-1rem 0 1rem">
+                                <div
+                                    style="height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden">
+                                    <div id="pwdStrengthBar"
+                                        style="height:100%;border-radius:2px;width:0;transition:all 0.3s;background:var(--danger)">
+                                    </div>
+                                </div>
+                                <div id="pwdStrengthLabel"
+                                    style="font-size:0.75rem;color:var(--text-muted);margin-top:4px"></div>
+                            </div>
+                            <div class="form-group input-icon">
+                                <label class="form-label">Confirm Password</label>
+                                <span class="icon">🔒</span>
+                                <input type="password" class="form-input" id="regPwdConfirm"
+                                    placeholder="Repeat password" required />
+                            </div>
+                            <div class="toggle-wrap" style="margin-bottom:1.5rem;font-size:0.85rem">
+                                <div class="toggle" id="termsToggle" onclick="this.classList.toggle('on')"></div>
+                                <span>I agree to <a href="#" style="color:var(--accent)">Terms of Service</a> & <a
+                                        href="#" style="color:var(--accent)">Privacy Policy</a></span>
+                            </div>
+                            <div style="display:flex;gap:1rem">
+                                <button type="button" class="btn btn-secondary" style="flex:1;justify-content:center"
+                                    onclick="nextStep(2)">← Back</button>
+                                <button type="submit" class="btn btn-primary" style="flex:2;justify-content:center"
+                                    id="registerBtn">🎉 Create Account</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="auth-switch">Already have an account? <a href="login.html">Sign in →</a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
