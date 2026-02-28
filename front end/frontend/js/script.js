@@ -531,8 +531,7 @@ function initForms() {
 initForms();
 
 /* ── 15. AI CHATBOT ── */
-const GROQ_API_KEY = "YOUR_GROQ_API_KEY_HERE";
-const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
+// AI Chatbot configuration moved to backend
 
 let chatHistory = [
   {
@@ -633,17 +632,13 @@ window.sendMessage = async function () {
   const typing = showTyping();
 
   try {
-    const response = await fetch(GROQ_API_URL, {
+    const response = await fetch(`${BACKEND_URL}/api/chat`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${GROQ_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: chatHistory,
-        temperature: 0.7,
-        max_tokens: 1024
+        messages: chatHistory
       })
     });
 

@@ -34,6 +34,7 @@ ensureModel();
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/predict", require("./routes/predictionRoutes"));
 app.use("/api/reports", require("./routes/reportRoutes"));
+app.use("/api/chat", require("./routes/chatRoutes"));
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
