@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="AI-Powered Early Osteoporosis Detection System — Detect bone density loss early with cutting-edge AI image analysis and clinical risk prediction."/>
+  <title>OsteoAI — AI-Powered Early Osteoporosis Detection</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦴</text></svg>"/>
+</head>
+<body>
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-logo">🦴 OsteoAI</div>
+  <div class="loader-ring"></div>
+  <div class="loader-text">Initializing AI Engine...</div>
+</div>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- Animated Particles -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<div class="page-wrapper">
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-icon">🦴</div>
+      <div class="brand-text">OsteoAI<span>Detection System</span></div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="upload.html">Upload X-Ray</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="chatbot.html">AI Chat</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="dot"></div>AI-Powered Medical Diagnostics</div>
+      <h1 class="hero-title">
+        Detect <span class="gradient-text">Osteoporosis</span><br/>Early with AI Precision
+      </h1>
+      <p class="hero-desc">
+        Our advanced deep-learning model analyzes bone X-rays and clinical data to detect osteoporosis risk with <strong>97.3% accuracy</strong> — before symptoms appear. Early detection saves lives.
+      </p>
+      <div class="hero-actions">
+        <a href="register.html" class="btn btn-primary btn-lg">🚀 Get Started Free</a>
+        <a href="upload.html" class="btn btn-secondary btn-lg">📤 Upload X-Ray</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num" data-count="97.3">0</div><div class="stat-label">Accuracy %</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="12000">0</div><div class="stat-label">Scans Analyzed</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="200">0</div><div class="stat-label">Hospitals</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-3d-card">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="xray-visual">
+          <div class="xray-scan-line"></div>
+          <div class="xray-icon">🦴</div>
+          <div class="ai-label">AI ANALYZING...</div>
+        </div>
+        <div class="confidence-bar">
+          <label>AI Confidence <span style="color:var(--accent)">92%</span></label>
+          <div class="bar-track"><div class="bar-fill"></div></div>
+        </div>
+        <div class="ai-label" style="font-size:0.75rem;color:var(--success)">✓ LOW RISK DETECTED</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">⚙️ Process</div>
+        <h2 class="section-title">How <span>It Works</span></h2>
+        <p class="section-desc">Three simple steps to get your bone health analysis powered by state-of-the-art AI.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="glass-card step-card reveal delay-1">
+          <div class="step-num">01</div>
+          <div class="step-icon">📤</div>
+          <h3>Upload X-Ray Image</h3>
+          <p>Simply upload your bone X-ray or DXA scan. We support JPEG, PNG, and DICOM formats with military-grade encryption.</p>
+        </div>
+        <div class="glass-card step-card reveal delay-2">
+          <div class="step-num">02</div>
+          <div class="step-icon">🤖</div>
+          <h3>AI Deep Analysis</h3>
+          <p>Our ResNet-50 deep learning model analyzes bone density patterns, trabecular structure, and cortical thickness in seconds.</p>
+        </div>
+        <div class="glass-card step-card reveal delay-3">
+          <div class="step-num">03</div>
+          <div class="step-icon">📋</div>
+          <h3>Get Detailed Report</h3>
+          <p>Receive a comprehensive medical report with risk classification, T-score estimation, and personalized recommendations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ── -->
+  <section class="section" style="background:rgba(0,201,167,0.03)" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">🧬 Technology</div>
+        <h2 class="section-title">AI-Powered <span>Features</span></h2>
+        <p class="section-desc">Cutting-edge tools built for medical professionals and patients alike.</p>
+      </div>
+      <div class="features-grid">
+        <div class="glass-card feature-card reveal delay-1">
+          <div class="feature-icon">🧠</div>
+          <h3>Deep Learning Analysis</h3>
+          <p>ResNet-50 CNN architecture trained on 50,000+ annotated bone scans for unmatched accuracy in bone density assessment.</p>
+        </div>
+        <div class="glass-card feature-card reveal delay-2">
+          <div class="feature-icon">📊</div>
+          <h3>Clinical Risk Scoring</h3>
+          <p>FRAX-compatible risk calculator integrating age, BMI, medication history and lifestyle factors for holistic assessment.</p>
+        </div>
+        <div class="glass-card feature-card reveal delay-3">
+          <div class="feature-icon">⚡</div>
+          <h3>Real-Time Results</h3>
+          <p>Analysis completed in under 10 seconds with confidence intervals and detailed heatmap overlays highlighting risk zones.</p>
+        </div>
+        <div class="glass-card feature-card reveal delay-1">
+          <div class="feature-icon">🔒</div>
+          <h3>HIPAA Compliant</h3>
+          <p>End-to-end AES-256 encryption, zero data retention policy, and full compliance with global medical data regulations.</p>
+        </div>
+        <div class="glass-card feature-card reveal delay-2">
+          <div class="feature-icon">🤖</div>
+          <h3>Medical AI Chatbot</h3>
+          <p>24/7 AI-powered medical assistant to answer osteoporosis-related questions, explain reports, and guide next steps.</p>
+        </div>
+        <div class="glass-card feature-card reveal delay-3">
+          <div class="feature-icon">📱</div>
+          <h3>Multi-Platform Access</h3>
+          <p>Fully responsive design works on desktop, tablet, and mobile. Access your health data anywhere, anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATISTICS ── -->
+  <section class="section" id="stats">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">📈 Why It Matters</div>
+        <h2 class="section-title">The <span>Silent Epidemic</span></h2>
+        <p class="section-desc">Osteoporosis affects millions silently. Early detection is the only proven prevention strategy.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="glass-card stat-card reveal delay-1">
+          <div class="stat-icon">🌍</div>
+          <span class="big-num" data-count="200">0M+</span>
+          <div class="stat-desc">People worldwide affected by osteoporosis</div>
+        </div>
+        <div class="glass-card stat-card reveal delay-2">
+          <div class="stat-icon">💀</div>
+          <span class="big-num" data-count="8.9">0M</span>
+          <div class="stat-desc">Fractures annually due to osteoporosis globally</div>
+        </div>
+        <div class="glass-card stat-card reveal delay-3">
+          <div class="stat-icon">⚠️</div>
+          <span class="big-num" data-count="80">0%</span>
+          <div class="stat-desc">Cases go undiagnosed until first fracture</div>
+        </div>
+        <div class="glass-card stat-card reveal delay-4">
+          <div class="stat-icon">✅</div>
+          <span class="big-num" data-count="70">0%</span>
+          <div class="stat-desc">Fracture risk reduction with early detection</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="section" style="background:rgba(0,201,167,0.03)" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">💬 Testimonials</div>
+        <h2 class="section-title">Trusted by <span>Medical Experts</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="glass-card testimonial-card reveal delay-1">
+          <div class="quote-icon">❝</div>
+          <p class="testimonial-text">OsteoAI's accuracy rivals our hospital's DEXA scan interpretations. It identified early-stage osteopenia in 3 patients our traditional methods missed completely.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DR</div>
+            <div><div class="author-name">Dr. Ramesh Iyer</div><div class="author-role">Orthopedic Surgeon, AIIMS Delhi</div></div>
+          </div>
+        </div>
+        <div class="glass-card testimonial-card reveal delay-2">
+          <div class="quote-icon">❝</div>
+          <p class="testimonial-text">The AI chatbot helped me understand my grandmother's bone density report in plain language. The interface is clean, fast, and genuinely impressive.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">PK</div>
+            <div><div class="author-name">Priya Krishnan</div><div class="author-role">Patient & Caregiver, Chennai</div></div>
+          </div>
+        </div>
+        <div class="glass-card testimonial-card reveal delay-3">
+          <div class="quote-icon">❝</div>
+          <p class="testimonial-text">As a radiologist, I'm impressed by the heatmap overlays and T-score estimation. This tool has real clinical potential for underserved communities.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SM</div>
+            <div><div class="author-name">Dr. Sarah Mehta</div><div class="author-role">Radiologist, Apollo Hospitals</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <section class="section" id="cta">
+    <div class="container">
+      <div class="glass-card reveal" style="padding:3.5rem;text-align:center;background:linear-gradient(135deg,rgba(0,201,167,0.1),rgba(0,229,255,0.05))">
+        <div style="font-size:3rem;margin-bottom:1rem">🦴</div>
+        <h2 class="section-title" style="margin-bottom:1rem">Start Your <span>Free Analysis</span> Today</h2>
+        <p style="color:var(--text-secondary);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto">Upload your X-ray now and get an AI-powered bone health report in seconds. No credit card required.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="register.html" class="btn btn-primary btn-lg">🚀 Get Started Free</a>
+          <a href="chatbot.html" class="btn btn-secondary btn-lg">💬 Ask AI Assistant</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-brand">
+            <div class="brand-icon">🦴</div>
+            <div class="brand-text">OsteoAI<span>Detection System</span></div>
+          </div>
+          <p>AI-powered early detection of osteoporosis. Saving lives through technology and early intervention.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn">🐦</a>
+            <a href="#" class="social-btn">💼</a>
+            <a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">🐙</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="upload.html">Upload X-Ray</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="report.html">View Report</a></li>
+            <li><a href="chatbot.html">AI Chatbot</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@osteoai.com">📧 info@osteoai.com</a></li>
+            <li><a href="tel:+911234567890">📞 +91 123 456 7890</a></li>
+            <li><a href="#">📍 Bengaluru, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 OsteoAI. All rights reserved. Built with ❤️ for Hackathon.</span>
+        <span>🦴 Powered by Deep Learning & Medical AI</span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end page-wrapper -->
+
+<script src="js/script.js"></script>
+</body>
+</html>

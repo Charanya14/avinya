@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="OsteoAI Dashboard — Monitor your bone health analytics and AI scan history." />
+    <title>Dashboard — OsteoAI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">🦴 OsteoAI</div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading Dashboard...</div>
+    </div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="page-wrapper">
+        <div class="dashboard-layout">
+
+            <!-- ── SIDEBAR ── -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <a href="index.html" class="navbar-brand">
+                        <div class="brand-icon">🦴</div>
+                        <div class="brand-text">OsteoAI<span>Dashboard</span></div>
+                    </a>
+                </div>
+                <nav class="sidebar-nav">
+                    <div class="nav-section-label">Main</div>
+                    <a href="dashboard.html" class="sidebar-link active"><span class="link-icon">📊</span>Overview</a>
+                    <a href="upload.html" class="sidebar-link"><span class="link-icon">📤</span>Upload X-Ray<span
+                            class="sidebar-badge">New</span></a>
+                    <a href="report.html" class="sidebar-link"><span class="link-icon">📋</span>My Reports</a>
+                    <a href="chatbot.html" class="sidebar-link"><span class="link-icon">🤖</span>AI Chatbot</a>
+                    <div class="nav-section-label">Analysis</div>
+                    <a href="#" class="sidebar-link"><span class="link-icon">🧠</span>Bone Density Trends</a>
+                    <a href="#" class="sidebar-link"><span class="link-icon">📈</span>Risk History</a>
+                    <a href="#" class="sidebar-link"><span class="link-icon">💊</span>Recommendations</a>
+                    <div class="nav-section-label">Account</div>
+                    <a href="about.html" class="sidebar-link"><span class="link-icon">ℹ️</span>About</a>
+                    <a href="contact.html" class="sidebar-link"><span class="link-icon">✉️</span>Support</a>
+                    <a href="#" class="sidebar-link"><span class="link-icon">⚙️</span>Settings</a>
+                </nav>
+                <div class="sidebar-footer">
+                    <div class="user-mini">
+                        <div class="user-avatar">👋</div>
+                        <div>
+                            <div class="user-mini-name">Hey there!</div>
+                            <div class="user-mini-role">Radiologist</div>
+                        </div>
+                        <a href="login.html" style="margin-left:auto;font-size:1.1rem;color:var(--text-muted)"
+                            title="Logout">🚪</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ── MAIN CONTENT ── -->
+            <main class="main-content">
+                <div class="top-bar">
+                    <div style="display:flex;align-items:center;gap:1rem">
+                        <button class="btn btn-icon" id="sidebarToggle" style="color:var(--text-primary)">☰</button>
+                        <h1 class="page-title">📊 Overview Dashboard</h1>
+                    </div>
+                    <div class="top-bar-actions">
+                        <button class="theme-toggle" id="themeToggle">🌙</button>
+                        <button class="btn btn-icon notification-btn">🔔<span class="notif-badge">3</span></button>
+                        <div class="user-mini" style="gap:0.5rem;cursor:pointer">
+                            <div class="user-avatar">👋</div>
+                            <div>
+                                <div class="user-mini-name">Hey there!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-body">
+                    <!-- Welcome -->
+                    <div style="margin-bottom:1.5rem">
+                        <h2 style="font-family:var(--font-main);font-size:1.5rem;font-weight:700">Hey there! 👋</h2>
+                        <p style="color:var(--text-secondary);font-size:0.9rem">Here's your bone health summary for
+                            today.</p>
+                    </div>
+
+                    <!-- Summary Cards -->
+                    <div class="summary-grid">
+                        <div class="glass-card summary-card">
+                            <div class="summary-header">
+                                <div class="summary-icon blue">🦴</div>
+                                <div class="summary-trend up">↑ 2.1%</div>
+                            </div>
+                            <div class="summary-value" data-count="78.4">0</div>
+                            <div class="summary-label">Avg. Bone Density Score (T)</div>
+                        </div>
+                        <div class="glass-card summary-card">
+                            <div class="summary-header">
+                                <div class="summary-icon orange">⚠️</div>
+                                <div class="summary-trend down">↓ 1.2%</div>
+                            </div>
+                            <div class="summary-value" style="color:var(--warning)">Moderate</div>
+                            <div class="summary-label">Overall Risk Level</div>
+                        </div>
+                        <div class="glass-card summary-card">
+                            <div class="summary-header">
+                                <div class="summary-icon green">🎯</div>
+                                <div class="summary-trend up">↑ 0.5%</div>
+                            </div>
+                            <div class="summary-value" data-count="97.3">0</div>
+                            <div class="summary-label">AI Confidence %</div>
+                        </div>
+                        <div class="glass-card summary-card">
+                            <div class="summary-header">
+                                <div class="summary-icon purple">📊</div>
+                                <div class="summary-trend up">↑ 4</div>
+                            </div>
+                            <div class="summary-value" data-count="24">0</div>
+                            <div class="summary-label">Total Scans Analyzed</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Row -->
+                    <div class="dashboard-charts">
+                        <div class="glass-card chart-card">
+                            <div class="chart-header">
+                                <div class="chart-title">📈 Bone Density Trend (Last 6 Months)</div>
+                                <select
+                                    style="background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text-primary);padding:0.3rem 0.6rem;border-radius:8px;font-size:0.8rem">
+                                    <option>6 Months</option>
+                                    <option>12 Months</option>
+                                    <option>All Time</option>
+                                </select>
+                            </div>
+                            <div class="chart-placeholder">
+                                <div style="font-size:2rem">📈</div>
+                                <div>Bone Density Chart</div>
+                                <div style="font-size:0.8rem">(Chart.js integration ready)</div>
+                            </div>
+                        </div>
+                        <div class="glass-card chart-card">
+                            <div class="chart-header">
+                                <div class="chart-title">🎯 Risk Distribution</div>
+                            </div>
+                            <div class="donut-placeholder">
+                                <div class="donut-center">
+                                    <div class="donut-val">24</div>
+                                    <div class="donut-lab">Scans</div>
+                                </div>
+                            </div>
+                            <div class="legend">
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background:var(--accent)"></div>Low Risk (45%)
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background:var(--accent2)"></div>Moderate (25%)
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background:var(--danger)"></div>High Risk (15%)
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background:rgba(255,255,255,0.2)"></div>In Progress
+                                    (15%)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Scans Table -->
+                    <div class="glass-card recent-table-card">
+                        <div class="table-header">
+                            <div class="chart-title">🗂️ Recent Scans</div>
+                            <a href="upload.html" class="btn btn-primary btn-sm">+ New Scan</a>
+                        </div>
+                        <div style="overflow-x:auto">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Scan ID</th>
+                                        <th>Date</th>
+                                        <th>Region</th>
+                                        <th>T-Score</th>
+                                        <th>Risk Level</th>
+                                        <th>AI Confidence</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#SC-2024-024</td>
+                                        <td>Feb 26, 2026</td>
+                                        <td>Lumbar Spine</td>
+                                        <td>-1.2</td>
+                                        <td><span class="risk-badge risk-moderate">Moderate</span></td>
+                                        <td>94.8%</td>
+                                        <td><a href="report.html" class="btn btn-sm btn-outline">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SC-2024-023</td>
+                                        <td>Feb 20, 2026</td>
+                                        <td>Hip (L)</td>
+                                        <td>-0.8</td>
+                                        <td><span class="risk-badge risk-low">Low</span></td>
+                                        <td>97.1%</td>
+                                        <td><a href="report.html" class="btn btn-sm btn-outline">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SC-2024-022</td>
+                                        <td>Feb 14, 2026</td>
+                                        <td>Femoral Neck</td>
+                                        <td>-2.6</td>
+                                        <td><span class="risk-badge risk-high">High</span></td>
+                                        <td>96.3%</td>
+                                        <td><a href="report.html" class="btn btn-sm btn-outline">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SC-2024-021</td>
+                                        <td>Feb 10, 2026</td>
+                                        <td>Wrist (R)</td>
+                                        <td>-0.5</td>
+                                        <td><span class="risk-badge risk-low">Low</span></td>
+                                        <td>98.2%</td>
+                                        <td><a href="report.html" class="btn btn-sm btn-outline">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SC-2024-020</td>
+                                        <td>Feb 03, 2026</td>
+                                        <td>Lumbar Spine</td>
+                                        <td>-2.1</td>
+                                        <td><span class="risk-badge risk-moderate">Moderate</span></td>
+                                        <td>95.7%</td>
+                                        <td><a href="report.html" class="btn btn-sm btn-outline">View</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description"
+        content="About OsteoAI — Mission, Vision, Technology, and Team behind the AI bone health platform." />
+    <title>About — OsteoAI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">🦴 OsteoAI</div>
+        <div class="loader-ring"></div>
+        <div class="loader-text">Loading...</div>
+    </div>
+    <div id="scroll-progress"></div>
+    <canvas id="particles-canvas"></canvas>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="page-wrapper">
+
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="navbar-brand">
+                <div class="brand-icon">🦴</div>
+                <div class="brand-text">OsteoAI<span>Detection System</span></div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="upload.html">Upload X-Ray</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="chatbot.html">AI Chat</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            </div>
+        </nav>
+
+        <!-- About Hero -->
+        <div class="about-hero">
+            <div class="section-tag reveal">🦴 Our Story</div>
+            <h1 class="section-title reveal" style="font-size:clamp(2rem,5vw,3.5rem)">Built to <span>Save
+                    Lives</span><br />Through Early Detection</h1>
+            <p class="section-desc reveal" style="margin-top:1rem">OsteoAI was born at a hackathon — a response to the
+                global osteoporosis crisis affecting 200 million people. We're combining medical expertise with AI to
+                make early detection accessible everywhere.</p>
+        </div>
+
+        <!-- Mission & Vision -->
+        <section class="section">
+            <div class="container">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem" class="mission-grid">
+                    <div class="glass-card reveal reveal-left"
+                        style="padding:3rem;background:linear-gradient(135deg,rgba(0,201,167,0.08),transparent)">
+                        <div style="font-size:3rem;margin-bottom:1rem">🎯</div>
+                        <h2 style="font-family:var(--font-main);font-weight:800;font-size:1.8rem;margin-bottom:1rem">Our
+                            <span
+                                style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Mission</span>
+                        </h2>
+                        <p style="color:var(--text-secondary);line-height:1.8">To democratize early osteoporosis
+                            detection by making AI-powered bone health analysis accessible, affordable, and accurate —
+                            from metropolitan hospitals to rural clinics worldwide. Every person deserves to know their
+                            bone health status before a fracture changes their life.</p>
+                    </div>
+                    <div class="glass-card reveal reveal-right"
+                        style="padding:3rem;background:linear-gradient(135deg,rgba(123,47,190,0.08),transparent)">
+                        <div style="font-size:3rem;margin-bottom:1rem">🔭</div>
+                        <h2 style="font-family:var(--font-main);font-weight:800;font-size:1.8rem;margin-bottom:1rem">Our
+                            <span
+                                style="background:var(--gradient-purple);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Vision</span>
+                        </h2>
+                        <p style="color:var(--text-secondary);line-height:1.8">A world where osteoporosis-related
+                            fractures become preventable through early AI detection. We envision OsteoAI integrated into
+                            routine health checkups globally, powered by continuously learning models that improve with
+                            every scan analyzed.</p>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="stats-grid reveal" style="margin-top:3rem">
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon">📊</div><span class="big-num" data-count="97.3">0</span>
+                        <div class="stat-desc">Model Accuracy (%)</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon">🧠</div><span class="big-num" data-count="52">0K+</span>
+                        <div class="stat-desc">Training Scans</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon">⚡</div><span class="big-num">&lt;10s</span>
+                        <div class="stat-desc">Analysis Time</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon">🏥</div><span class="big-num" data-count="200">0+</span>
+                        <div class="stat-desc">Partner Hospitals</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="section" style="background:rgba(0,201,167,0.02)">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">💻 Technology</div>
+                    <h2 class="section-title">Our <span>Tech Stack</span></h2>
+                    <p class="section-desc">Built with state-of-the-art tools and frameworks for performance,
+                        scalability, and accuracy.</p>
+                </div>
+                <div class="tech-stack-grid reveal">
+                    <div class="tech-badge">🐍 Python 3.11</div>
+                    <div class="tech-badge">🤖 TensorFlow 2.x</div>
+                    <div class="tech-badge">📐 PyTorch</div>
+                    <div class="tech-badge">🧠 ResNet-50 CNN</div>
+                    <div class="tech-badge">🚀 FastAPI</div>
+                    <div class="tech-badge">🐘 PostgreSQL</div>
+                    <div class="tech-badge">☁️ AWS S3</div>
+                    <div class="tech-badge">🐳 Docker</div>
+                    <div class="tech-badge">🔷 React.js</div>
+                    <div class="tech-badge">🗃️ MongoDB</div>
+                    <div class="tech-badge">📦 Redis</div>
+                    <div class="tech-badge">🔒 AES-256</div>
+                    <div class="tech-badge">🌐 REST API</div>
+                    <div class="tech-badge">📊 Chart.js</div>
+                    <div class="tech-badge">🩺 DICOM.js</div>
+                    <div class="tech-badge">🤝 OpenAI GPT-4</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section" id="team">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-tag">👥 The Team</div>
+                    <h2 class="section-title">Meet the <span>Builders</span></h2>
+                    <p class="section-desc">A passionate interdisciplinary team of engineers, doctors, and designers —
+                        united by a hackathon dream.</p>
+                </div>
+                <div class="team-grid">
+                    <div class="glass-card team-card reveal delay-1">
+                        <div class="team-avatar" style="animation-delay:0s">AK</div>
+                        <div class="team-name">Akhil Kumar</div>
+                        <div class="team-role">Lead AI Engineer</div>
+                        <div class="team-bio">Deep learning specialist with expertise in medical image analysis and CNN
+                            architectures.</div>
+                        <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:1rem">
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">🐙</a>
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">💼</a>
+                        </div>
+                    </div>
+                    <div class="glass-card team-card reveal delay-2">
+                        <div class="team-avatar" style="animation-delay:0.5s">PR</div>
+                        <div class="team-name">Priya Rao</div>
+                        <div class="team-role">Medical Advisor</div>
+                        <div class="team-bio">MBBS radiologist bringing clinical validation and medical accuracy to the
+                            AI models.</div>
+                        <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:1rem">
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">🐙</a>
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">💼</a>
+                        </div>
+                    </div>
+                    <div class="glass-card team-card reveal delay-3">
+                        <div class="team-avatar" style="animation-delay:1s">VN</div>
+                        <div class="team-name">Vikash Nair</div>
+                        <div class="team-role">Full Stack Developer</div>
+                        <div class="team-bio">Frontend & backend architect building the seamless user experience and API
+                            infrastructure.</div>
+                        <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:1rem">
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">🐙</a>
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">💼</a>
+                        </div>
+                    </div>
+                    <div class="glass-card team-card reveal delay-4">
+                        <div class="team-avatar" style="animation-delay:1.5s">SM</div>
+                        <div class="team-name">Sneha Mehta</div>
+                        <div class="team-role">UI/UX Designer</div>
+                        <div class="team-bio">Creating intuitive, beautiful interfaces that make complex medical data
+                            feel approachable.</div>
+                        <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:1rem">
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">🐙</a>
+                            <a href="#" class="social-btn" style="width:30px;height:30px;font-size:0.8rem">💼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="navbar-brand">
+                            <div class="brand-icon">🦴</div>
+                            <div class="brand-text">OsteoAI<span>Detection System</span></div>
+                        </div>
+                        <p>AI-powered early detection of osteoporosis. Saving lives through technology.</p>
+                        <div class="footer-socials">
+                            <a href="#" class="social-btn">🐦</a><a href="#" class="social-btn">💼</a><a href="#"
+                                class="social-btn">🐙</a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="upload.html">Upload X-Ray</a></li>
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="chatbot.html">AI Chatbot</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:info@osteoai.com">📧 info@osteoai.com</a></li>
+                            <li><a href="tel:+911234567890">📞 +91 123 456 7890</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom"><span>© 2026 OsteoAI. All rights reserved.</span><span>🦴 Built for Hackathon
+                        2026</span></div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
